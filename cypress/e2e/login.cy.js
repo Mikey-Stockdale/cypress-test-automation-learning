@@ -2,9 +2,13 @@ import LoginPage from '../support/pages/LoginPage'
 
 describe('SauceDemo Login', () => {
   it('logs in with a valid user', () => {
-    LoginPage.visit()
-    LoginPage.login('standard_user', 'secret_sauce')
+    cy.fixture('users').then((users) => {
+      const user = users.validUser
 
-    cy.url().should('include', 'inventory')
+      LoginPage.visit()
+      LoginPage.login(user.username, user.password)
+
+      cy.url().should('include', 'inventory')
+    })
   })
 })
