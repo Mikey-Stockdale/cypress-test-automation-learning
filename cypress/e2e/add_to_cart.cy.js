@@ -15,6 +15,6 @@ describe('SauceDemo Add to Cart', () => {
             InventoryPage.openCart()
 
             CartPage.getCartItem('Sauce Labs Backpack').should('be.visible')
-        })
-    })
+        });
+    });
 })
